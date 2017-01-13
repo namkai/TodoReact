@@ -20,7 +20,7 @@ module.exports = {
       root: __dirname,
       modulesDirectories: [
         'node_modules',
-        './src/components'  
+        './src/components'
       ],
     extensions: ['', '.js', '.jsx']
   },

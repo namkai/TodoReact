@@ -4,7 +4,7 @@ export default class Todo extends Component {
     render() {
         let {id, text} = this.props
         return (
-            <div>
+            <div className="todo">
                 {id}. {text}
             </div>
         )

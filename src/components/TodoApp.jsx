@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import TodoList from './TodoList/TodoList'
+import TodoSearch from './Search'
+import AddTodo from './AddTodo'
 
 export default class TodoApp extends Component {
     constructor(props) {
@@ -22,12 +24,17 @@ export default class TodoApp extends Component {
             ]
         }
     }
+    handleAddTodo(text) {
+        alert('new todo: ' + text);
+    }
     render() {
         var {todos} = this.state;
 
         return (
             <div>
+                {/* <TodoSearch/> */}
                 <TodoList todos={todos}/>
+                <AddTodo onAddTodo={this.handleAddTodo}/>
             </div>
         )
     }
