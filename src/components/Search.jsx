@@ -4,6 +4,7 @@ export default class TodoSearch extends Component {
     constructor(props) {
         super(props);
 
+        this.handleSearch = this.handleSearch.bind(this)
     }
     handleSearch() {
         let showCompleted = this.refs.showCompleted.checked;
@@ -13,16 +14,20 @@ export default class TodoSearch extends Component {
     }
     render() {
         return (
-            <div>
+            <div id="search-todo">
+                <div>
+                    <h4>Todo List</h4>
+                </div>
                 <div>
                     <input type="search" ref="searchText" placeholder="Search todos" onChange={this.handleSearch}/>
                 </div>
                 <div>
-                    <label>
-                        <input type="checkbox" id="indeterminate-checkbox" onChange={this.handleSearch}/>
-                        <label htmlFor="indeterminate-checkbox">Indeterminate Style</label>
-                    </label>
+                    <input type="checkbox" id="indeterminate-checkbox" onChange={this.handleSearch} ref="showCompleted"/>
+                    <label htmlFor="indeterminate-checkbox">Show completed todos</label>
                 </div>
+                
+                <hr/>
+
             </div>
         )
     }

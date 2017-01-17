@@ -1,0 +1,24 @@
+label {
+    color: black !important;
+}
+
+
+hr {
+    width: 230px;
+    margin-right: 230px;
+    border: 0 !important;
+    height: 1px !important;
+    background-image: linear-gradient(to right, rgba(38, 166, 154, .75), rgba(0, 0, 0 , 0.75), rgba(0, 0, 0, 0));
+}
+
+#search-todo {
+    width: 50%;
+}
+
+#Add-Todo {
+    width: 50%;
+}
+
+#app {
+    margin: 0 auto;
+}
