@@ -4,6 +4,7 @@ import TodoSearch from './Search';
 import AddTodo from './AddTodo';
 import uuid from 'node-uuid';
 import {setTodos, getTodos, filterTodos} from '../api/TodoApi';
+import moment from 'moment';
 
 
 export default class TodoApp extends Component {
@@ -12,7 +13,8 @@ export default class TodoApp extends Component {
         this.state = {
             showCompleted: false,
             searchText: '',
-            todos: getTodos()
+            todos: getTodos(),
+            createdAt: moment().unix()
         }
         this.handleAddTodo = this.handleAddTodo.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
@@ -28,7 +30,9 @@ export default class TodoApp extends Component {
                 {
                     id: uuid(),
                     text: text,
-                    completed: false
+                    completed: false,
+                    createdAt: moment().unix(),
+                    completedAt: undefined
                 }
             ]
         })
@@ -43,13 +47,14 @@ export default class TodoApp extends Component {
         let updatedTodos = this.state.todos.map(function(todo) {
             if(todo.id === id) {
                 todo.completed = !todo.completed;
+                todo.completedAt = todo.completed ? moment().unix() : undefined;
             }
             return todo;
         })
         this.setState({todos: updatedTodos})
     }
     render() {
-        let {todos, showCompleted, searchText} = this.state;
+        let {todos, showCompleted, searchText, createdAt} = this.state;
         let filteredTodos = filterTodos(todos, showCompleted, searchText);
         return (
             <div id="app">
